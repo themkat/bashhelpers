@@ -24,3 +24,9 @@ function emacs_create_dir_locals_gamecube_portlibs() {
 	HEADERS="$DEVKITPRO/libogc/include/ $DEVKITPRO/portlibs/gamecube/include/"
 	__emacs_create_dir_locals_c_config "$HEADERS"
 }
+
+# create dir locals for GBA development using libgba
+function emacs_create_dir_locals_gba() {
+	HEADERS="$DEVKITPRO/libgba/include/"
+	__emacs_create_dir_locals_c_config "$HEADERS"
+}
