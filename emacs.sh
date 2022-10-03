@@ -30,3 +30,9 @@ function emacs_create_dir_locals_gba() {
 	HEADERS="$DEVKITPRO/libgba/include/"
 	__emacs_create_dir_locals_c_config "$HEADERS"
 }
+
+# create dir locals for nintendo ds development using libnds
+function emacs_create_dir_locals_nds() {
+	HEADERS="$DEVKITPRO/libnds/include/"
+	__emacs_create_dir_locals_c_config "$HEADERS"
+}
