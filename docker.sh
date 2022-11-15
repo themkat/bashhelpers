@@ -7,3 +7,11 @@ function docker_delete_none_images() {
 	done
 }
 
+# clears containers, builder cache, networks etc.
+# data related to runtime operations
+function docker_clear_runtime() {
+    docker container prune -f
+    docker builder prune -f
+    docker network prune -f
+    docker_delete_none_images
+}
