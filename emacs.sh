@@ -36,3 +36,8 @@ function emacs_create_dir_locals_nds() {
 	HEADERS="$DEVKITPRO/libnds/include/"
 	__emacs_create_dir_locals_c_config "$HEADERS"
 }
+
+function emacs_create_dir_locals_nds_portlibs() {
+	HEADERS="$DEVKITPRO/libnds/include/ $DEVKITPRO/portlibs/nds/include/"
+	__emacs_create_dir_locals_c_config "$HEADERS"
+}
