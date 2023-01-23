@@ -41,3 +41,9 @@ function emacs_create_dir_locals_nds_portlibs() {
 	HEADERS="$DEVKITPRO/libnds/include/ $DEVKITPRO/portlibs/nds/include/"
 	__emacs_create_dir_locals_c_config "$HEADERS"
 }
+
+
+# KScript uses an environment variable to control IDEA command
+# (for opening the script in IntelliJ IDEA).
+# By setting this we can default to Emacs instead when running kscript --idea ourscript.kts
+export KSCRIPT_IDEA_COMMAND="emacsclient -n"
