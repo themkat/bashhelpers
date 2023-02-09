@@ -1,0 +1,28 @@
+name: Lint scripts
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          # TODO: currently only linting the ones I use most
+          #       add the others after a while...
+          - docker.sh
+          - emacs.sh
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install shellcheck
+        run: |
+          sudo apt install -y shellcheck
+      - name: Lint script ${{ matrix.script }}
+        env:
+          SHELLCHECK_OPTS: "-e SC2028"
+        run: |
+          shellcheck ${{ matrix.script }}
