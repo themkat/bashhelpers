@@ -7,7 +7,7 @@
 
 function __emacs_create_dir_locals_c_config() {
 	HEADERS=$1
-	HEADERS_QUOTED=$(echo $1 | tr ' ' '\n' | sed -E 's/(.*)/\"\1\"/')
+	HEADERS_QUOTED=$(echo "$1" | tr ' ' '\n' | sed -E 's/(.*)/\"\1\"/')
 	CLANG_ARGS=$(echo "$HEADERS" | tr ' ' '\n' | sed -E 's/(.*)/\"-I\1\"/')
 	
 	echo "((c-mode . ((company-clang-arguments . ($CLANG_ARGS))\n\

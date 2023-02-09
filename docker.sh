@@ -2,8 +2,8 @@
 
 # Deletes all temporary images created during builds ("none images")
 function docker_delete_none_images() {
-	for img in `docker images -f dangling=true -q`; do
-		docker image rm $img;
+	for img in $(docker images -f dangling=true -q); do
+		docker image rm "$img";
 	done
 }
 
@@ -13,13 +13,13 @@ function docker_delete_none_images() {
 function docker_stop_kill() {
     CONTAINERS=$(docker ps -q -a)
 
-    if [ -z $CONTAINERS ];
+    if [ -z "$CONTAINERS" ];
     then
         echo "Can't stop and kill containers if there are none stupid :)"
         return 1
     fi
 
-    docker container rm -f $CONTAINERS
+    docker container rm -f "$CONTAINERS"
     docker network prune -f
     unset CONTAINERS
 }
@@ -28,7 +28,7 @@ function docker_stop_kill() {
 # data related to runtime operations
 function docker_clear_runtime() {
     docker container prune -f
-    docker builder prune -f
+    docker builder prune -f --all
     docker network prune -f
     docker_delete_none_images
 }
