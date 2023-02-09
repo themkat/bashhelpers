@@ -5,7 +5,7 @@ function vid2gif() {
     vid=$1
     gif=$2
 
-    ffmpeg -i $vid -lavfi "mpdecimate,scale=800:-1" -loop 0 $gif
+    ffmpeg -i "$vid" -lavfi "mpdecimate,scale=800:-1" -loop 0 "$gif"
 }
 
 # I always forget the arguments to this command (arp). Raspberry Pi always have a mac address starting with this pattern, so just have an alias for it
