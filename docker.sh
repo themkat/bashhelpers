@@ -26,8 +26,10 @@ function docker_stop_kill() {
 
 # clears containers, builder cache, networks etc.
 # data related to runtime operations
+# TODO: should probably have a different name. Doesn't runtime imply that images should be deleted as well? I rarely want that...
 function docker_clear_runtime() {
     docker container prune -f
+    docker_stop_kill
     docker builder prune -f --all
     docker network prune -f
     docker_delete_none_images
