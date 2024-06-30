@@ -16,13 +16,13 @@ blocks:
     foreground: p:wight
     background: p:blue
     leading_diamond: 
-    template: "{{.Icon}} "
+    template: " {{.Icon}} "
   - type: session
     style: powerline
     powerline_symbol: 
     foreground: p:text
     background: p:blue
-    template: "{{ .UserName }} "
+    template: "{{ .UserName }}"
   - type: path
     style: powerline
     powerline_symbol: 
@@ -52,7 +52,7 @@ blocks:
     foreground_templates:
     - "{{ if gt .Code 0 }}#f1184c{{ end }}"
     background: p:wight
-    template: "{{ if gt .Code 0 }} \u2718 {{ else }} \u2713 {{ end }}"
+    template: "{{ if gt .Code 0 }} \u2718{{ else }} \u2713{{ end }}"
     properties:
       always_enabled: true
 - type: prompt
