@@ -62,6 +62,14 @@ blocks:
     template: "{{ if gt .PhysicalPercentUsed 85.0 }}\n       {{ round .PhysicalPercentUsed .Precision }} % memory used!{{end}}"
     properties:
       precision: 1
+
+  # Kubernetes info
+  - type: kubectl
+    style: powerline
+    powerline-symbol: 
+    leading_diamond: 
+    template: "{{ if and .Env.SHOW_K8S_INFO .Cluster }}\n     k8s:     {{if .Namespace}}{{.Namespace}} @ {{end}}{{.Cluster}}{{end}}"
+
 - type: prompt
   alignment: left
   segments:
