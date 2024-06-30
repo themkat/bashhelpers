@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 2
+final_space: true
+console_title_template: "{{ .Shell }} in {{ .Folder }}"
+blocks:
+- type: prompt
+  alignment: left
+  segments:
+  - type: text
+    style: plain
+    template: "\n"
+  - type: os
+    style: diamond
+    powerline_symbol: 
+    foreground: p:wight
+    background: p:blue
+    leading_diamond: 
+    template: "{{.Icon}} "
+  - type: session
+    style: powerline
+    powerline_symbol: 
+    foreground: p:text
+    background: p:blue
+    template: "{{ .UserName }} "
+  - type: path
+    style: powerline
+    powerline_symbol: 
+    foreground: p:text
+    background: p:pink
+    template: " \ue5ff {{ .Path }}"
+    properties:
+      folder_icon: ....
+      home_icon: "~"
+      style: agnoster_short
+      max_depth: 2
+  - type: git
+    style: powerline
+    powerline_symbol: 
+    foreground: "#193549"
+    background: p:lavender
+    background_templates:
+     - "{{ if or (.Working.Changed) (.Staging.Changed) }}#BF40BF{{ end }}"
+    template: " {{ .HEAD }}{{ if .Working.Changed }} \uf044 {{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }} stashes{{ end }}"
+    properties:
+      fetch_stash_count: true
+      fetch_status: true
+  - type: status
+    style: powerline
+    powerline_symbol: 
+    foreground: p:success
+    foreground_templates:
+    - "{{ if gt .Code 0 }}#f1184c{{ end }}"
+    background: p:wight
+    template: "{{ if gt .Code 0 }} \u2718 {{ else }} \u2713 {{ end }}"
+    properties:
+      always_enabled: true
+- type: prompt
+  alignment: left
+  segments:
+  - type: root
+    style: plain
+    foreground: "#f1184c"
+    template: "# "
+  - type: text
+    style: plain
+    foreground: p:pink
+    template: "$ "
+  newline: true
+transient_prompt:
+  foreground: "#FFD700"
+  background: transparent
+  template: "> {{if .Root}} 🚨 {{end}}"
+palette:
+  success: "#33DD2D"
+  failure: "#f1184c"
+  blue: "#8AADF4"
+  lavender: "#B7BDF8"
+  os: "#ACB0BE"
+  pink: "#F5BDE6"
+  text: "#494D64"
+  wight: "#FFFFFF"
