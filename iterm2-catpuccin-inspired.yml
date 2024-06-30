@@ -22,7 +22,7 @@ blocks:
     powerline_symbol: 
     foreground: p:text
     background: p:blue
-    template: "{{ .UserName }}"
+    template: "{{ .UserName }}@{{ .HostName }}"
   - type: path
     style: powerline
     powerline_symbol: 
