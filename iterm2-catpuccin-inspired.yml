@@ -55,6 +55,13 @@ blocks:
     template: "{{ if gt .Code 0 }} \u2718{{ else }} \u2713{{ end }}"
     properties:
       always_enabled: true
+
+  # Show a line with a warning if we use 85 % of available memory. Nice to know...
+  - type: sysinfo
+    foreground: p:failure
+    template: "{{ if gt .PhysicalPercentUsed 85.0 }}\n       {{ round .PhysicalPercentUsed .Precision }} % memory used!{{end}}"
+    properties:
+      precision: 1
 - type: prompt
   alignment: left
   segments:
