@@ -53,11 +53,11 @@ export KSCRIPT_IDEA_COMMAND="emacsclient -n"
 # Also make sure that we aren't spamfucked with errors.
 # My goal here is mostly completion + doc popups
 function clangd_create_gbdk_conf() {
-    cat <<EOF >> .clangd
+    cat <<EOF > .clangd
 CompileFlags:
-  Add: [-I$GBDK_HOME/gbdk/include, -ferror-limit=0]
+  Add: [-I$GBDK_HOME/include, -std=c90, -xc, -ferror-limit=0]
 
 Diagnostics:
-  Suppress: [pp_hash_error, unknown_typename, main_returns_nonint,  invalid_token_after_toplevel_declarator, fatal_too_many_errors, -Wimplicit-int, -Wmain-return-type]
+  Suppress: [pp_hash_error, unknown_typename, main_returns_nonint,  invalid_token_after_toplevel_declarator, fatal_too_many_errors]
 EOF
 }
