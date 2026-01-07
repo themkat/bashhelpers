@@ -53,8 +53,7 @@ export KSCRIPT_IDEA_COMMAND="emacsclient -n"
 # Also make sure that we aren't spamfucked with errors.
 # My goal here is mostly completion + doc popups
 function clangd_create_gbdk_conf() {
-    echo 'Creating .clangd file with contents:'
-    cat > .clangd <<EOF | cat
+    cat <<EOF >> .clangd
 CompileFlags:
   Add: [-I$GBDK_HOME/gbdk/include, -std=c90, -ferror-limit=0]
 
