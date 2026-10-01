@@ -5,6 +5,7 @@
 # Useful for repos with a long history before Claude, so you can relive the glory days before they turned to shit.
 # Remember that we can't detect everything. People love to claim they did work that they did not in fact actually do...
 # FUCK YOU <3
+set -e
 
 INPUT_REPO=$1
 
